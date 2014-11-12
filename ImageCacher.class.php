@@ -11,13 +11,10 @@ class ImageCacher
 
     public function __construct($rule, $rootURL, $path, $cacheDataFile)
     {
-        $this->path = $path;
-        if (!$cacheDataFile)
-            $this->cacheDataFile = $path;
-        $this->cacheDataFile = $cacheDataFile;
-        $this->rootURL       = $rootURL;
         $this->path          = $path;
         $this->rule          = $rule;
+        $this->rootURL       = $rootURL;
+        $this->cacheDataFile = $this->path.'/imagecacher-data';
     }
 
     private function dowloadImage($imgURL, $nameWithPath, $remoteImgDate)
@@ -77,13 +74,9 @@ class ImageCacher
 
     public function setRootURL($rootURL){$this->rootURL = $rootURL;}
 
-    public function setCacheDataFile($cacheDataFile){$this->cacheDataFile = $cacheDataFile;}
-
     public function getPath(){return $this->path;}
 
     public function getRule(){return $this->rule;}
 
     public function getRootURL(){return $this->rootURL;}
-
-    public function getCacheDataFile(){return $this->cacheDataFile;}
 }
