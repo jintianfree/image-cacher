@@ -9,7 +9,7 @@ class ImageCacher
     private $rootURL;
     private $cacheDataFile;
 
-    public function __construct($rule, $rootURL, $path, $cacheDataFile)
+    public function __construct($rule, $rootURL, $path)
     {
         $this->path          = $path;
         $this->rule          = $rule;
