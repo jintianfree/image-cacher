@@ -28,7 +28,7 @@ class ImageCacher
         fclose($fp);
         touch($nameWithPath, $remoteImgDate);
         $fp = fopen($this->cacheDataFile, 'w');
-        fwrite($fp, time().'\n');
+        fwrite($fp, time()."\n");
         fclose($fp);
     }
 
