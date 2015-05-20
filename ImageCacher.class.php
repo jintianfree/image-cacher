@@ -82,18 +82,20 @@ class ImageCacher
     public function getRootURL(){return $this->rootURL;}
 }
 
+$local_url = "./wofanweiwu.gif";
 
-
-
-
-
-$ic = new ImageCacher('-7 days', '.', 'remote-img');
-//$remote_url = $_GET['picurl'];
-$remote_url = urldecode($_GET['picurl']); 
-$local_url = $ic->getImage($remote_url);
-
-
-
+if(isset($_SERVER['HTTP_REFERER']))
+{
+    $pos = strpos($_SERVER['HTTP_REFERER'], "wofan");
+    
+    /* http://wofanweiwu.cf  http://www.wofanweiwu.cf */
+    if($pos > 0 && $pos < 15)
+    {
+        $ic = new ImageCacher('-7 days', '.', 'remote-img');
+        $remote_url = urldecode($_GET['picurl']); 
+        $local_url = $ic->getImage($remote_url);
+    }
+} 
 
 header("Content-Type: image/jpeg");
 readfile($local_url);
