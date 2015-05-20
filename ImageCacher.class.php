@@ -2,6 +2,7 @@
 /**
 * @author Gaëtan Masson <gaetanmdev@gmail.com>
 */
+
 class ImageCacher
 {
     private $path;
@@ -80,3 +81,19 @@ class ImageCacher
 
     public function getRootURL(){return $this->rootURL;}
 }
+
+
+
+
+
+
+$ic = new ImageCacher('-7 days', '.', 'remote-img');
+$remote_url = $_GET['picurl'];
+$local_url = $ic->getImage($remote_url);
+
+
+
+
+header("Content-Type: image/jpeg");
+readfile($local_url);
+?>
