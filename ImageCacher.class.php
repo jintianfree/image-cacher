@@ -88,7 +88,8 @@ class ImageCacher
 
 
 $ic = new ImageCacher('-7 days', '.', 'remote-img');
-$remote_url = $_GET['picurl'];
+//$remote_url = $_GET['picurl'];
+$remote_url = urldecode($_GET['picurl']); 
 $local_url = $ic->getImage($remote_url);
 
 
